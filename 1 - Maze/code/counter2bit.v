@@ -6,11 +6,11 @@ module counter2bit(rst, clk, init, ld, en, prl, out, Co);
     output Co;
 
     always @(posedge clk or posedge rst) begin
-        if (rst || init) 
+        if (rst || init)
             out <= 2'b0;
-        else if (ld) 
+        else if (ld)
             out <= prl;
-        else if (en) 
+        else if (en)
             out <= out + 1;
     end
 

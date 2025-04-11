@@ -7,12 +7,12 @@ module tb();
     wire [1:0] Move;
     intelligent_rat rat(
         .clk(clk), .rst(rst), .Run(Run), .Start(Start),
-        .Fail(Fail), .Done(Done), .Move(Move), .X(X), .Y(Y), 
+        .Fail(Fail), .Done(Done), .Move(Move), .X(X), .Y(Y),
         .D_in(D_in), .D_out(D_out), .RD(RD), .WR(WR)
     );
 
     maze_memory maze(
-        .clk(clk), .X(X), .Y(Y), .D_in(D_in), 
+        .clk(clk), .X(X), .Y(Y), .D_in(D_in),
         .RD(RD), .WR(WR), .D_out(D_out)
     );
 

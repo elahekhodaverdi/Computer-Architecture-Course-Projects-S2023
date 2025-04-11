@@ -53,5 +53,5 @@ module list (clk, rst, push, init, en_read, data_in, complete_read, data_out);
             end
         end
     end
-    
+
 endmodule

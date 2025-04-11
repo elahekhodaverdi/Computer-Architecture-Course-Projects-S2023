@@ -3,7 +3,7 @@ module datapath(clk, rst, init_x, init_y, ldx, ldy, ld_count, Co,
                 init_count, en_count, list_push, en_read, init_list,
                 init_stack, stack_dir_push, stack_dir_pop, r_update,
                 X, Y, Move, found, empty_stack, complete_read, invalid);
-    
+
     parameter DIRECTION_SIZE = 2;
     parameter N = 4;
 
@@ -11,14 +11,14 @@ module datapath(clk, rst, init_x, init_y, ldx, ldy, ld_count, Co,
           init_count, en_count, list_push, en_read, init_list,
           init_stack, stack_dir_push, stack_dir_pop, r_update;
 
-    output [N - 1:0] X, Y, add_res;
-    output [DIRECTION_SIZE - 1:0] Move, stackp;
+    output [N - 1:0] X, Y;
+    output [DIRECTION_SIZE - 1:0] Move;
     output found, empty_stack, complete_read, Co, invalid;
-    
-    wire [N - 1:0] mux1, mux2, mux3;
-    wire [DIRECTION_SIZE-1:0] counter;
+
+    wire [N - 1:0] mux1, mux2, mux3, add_res;
+    wire [DIRECTION_SIZE-1:0] counter,stackp;
     wire slc_mux, dec_en, fa_co;
-    
+
     assign dec_en = r_update ^ (~counter[0]);
     assign slc_mux = ^counter;
 
@@ -43,7 +43,7 @@ module datapath(clk, rst, init_x, init_y, ldx, ldy, ld_count, Co,
     );
 
     list result_list(
-        .clk(clk), .rst(rst), .push(list_push), .init(init_list), .en_read(en_read), 
+        .clk(clk), .rst(rst), .push(list_push), .init(init_list), .en_read(en_read),
         .data_in(stackp), .complete_read(complete_read), .data_out(Move)
     );
 

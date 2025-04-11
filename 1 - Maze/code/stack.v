@@ -12,7 +12,7 @@ module stack(clk, rst, init, pop, push, empty, d_in, d_out);
     output empty;
 
     reg [WIDTH - 1:0] stack [DEPTH - 1:0];
-    reg [`BITS(DEPTH) - 1:0] index, next_index; 
+    reg [`BITS(DEPTH) - 1:0] index, next_index;
     reg [WIDTH - 1:0] d_out, next_d_out;
 
     wire empty;
@@ -35,7 +35,7 @@ module stack(clk, rst, init, pop, push, empty, d_in, d_out);
             next_d_out  = stack[index - 1'b1];
             next_index = index - 1'b1;
         end
-        
+
         else begin
             next_d_out  = d_out;
             next_index = index;
